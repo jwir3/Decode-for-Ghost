@@ -642,13 +642,25 @@
 	margin-right: 0.2em;
 }
 
-/* The subscribe icon on the footer */
-.subscribe {
+/*
+ * A little mixin to determine how much spacing we should have.
+ */
+@mixin spacing($min, $max) {
+  @for $i from $min through $max {
+    &:first-child:nth-last-child(#{$i}),
+    &:first-child:nth-last-child(#{$i}) ~ & {
+      left: 1 / ($i + 1) * 100%;
+    }
+  }
+}
+
+/* The subscribe and social icons on the footer */
+.subscribe, .social {
 	width: 50px;
 	height: 50px;
-	position: absolute;
-	top: -25px;
-	left: 50%;
+        position: absolute;
+        top: -25px;
+        @include spacing(1, 20);
 	margin-left: -25px;
 	text-align: center;
 	line-height: 2.4rem;
@@ -669,13 +681,24 @@
 	&:hover {
 		background-color: $secondary-accent-color;
 	}
-	
+
 	&:active {
 		background-color: $secondary-text-color;
 	}
 }
 
-/* CSS tooltip saying "RSS" - initially hidden */
+.social {
+  &::before {
+    font-size: 50px;
+    left: 5px;
+  }
+}
+
+/*
+@include space-out('.subscription-bar', 1, 20);
+*/
+
+/* CSS tooltip for subscriptions and social icons - initially hidden */
 .tooltip {
 	opacity:0;
 	display: inline-block;
@@ -711,6 +734,11 @@
 
 /* On hover, show the tooltip! */
 .subscribe:hover .tooltip {
+	opacity: 1;
+	top: -33px;
+}
+
+.social:hover .tooltip {
 	opacity: 1;
 	top: -33px;
 }

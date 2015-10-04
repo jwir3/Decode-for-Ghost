@@ -14,6 +14,18 @@
 	font-style: normal;
 }
 
+@font-face {
+    font-family: 'Mono Social Icons Font';
+    src: url($font-assets + 'sMonoSocialIconsFont-1.10.eot');
+    src: url($font-assets + 'MonoSocialIconsFont-1.10.eot?#iefix') format('embedded-opentype'),
+         url($font-assets + 'MonoSocialIconsFont-1.10.woff') format('woff'),
+         url($font-assets + 'MonoSocialIconsFont-1.10.ttf') format('truetype'),
+         url($font-assets + 'MonoSocialIconsFont-1.10.svg#MonoSocialIconsFont') format('svg');
+    src: url($font-assets + 'MonoSocialIconsFont-1.10.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 [class^="icon-"], [class*=" icon-"] {
 	font-family: 'DecodeIcons';
 	speak: none;
@@ -28,9 +40,51 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+[class^="social-"], [class*=" social-"] {
+       font-family: 'Mono Social Icons Font';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+       -webkit-text-rendering: optimizeLegibility;
+       -moz-text-rendering: optimizeLegibility;
+       -ms-text-rendering: optimizeLegibility;
+       -o-text-rendering: optimizeLegibility;
+       text-rendering: optimizeLegibility;
+       -webkit-font-smoothing: antialiased;
+       -moz-font-smoothing: antialiased;
+       -ms-font-smoothing: antialiased;
+       -o-font-smoothing: antialiased;
+        font-smoothing: antialiased;
+}
+
 .icon-ghost:before {
 	content: "\e000";
 }
-.icon-feed:before {
-	content: "\e001";
+.social-rss:before {
+	content: "\e071";
+}
+
+.social-github:before {
+        content: "\e037";
+}
+
+.social-facebook:before {
+        content: "\e027";
+}
+
+.social-stackoverflow:before {
+        content: "\e081";
+}
+
+.social-twitter:before {
+  content: "\e087";
+}
+
+.social-email:before {
+  content: "\e024";
 }

@@ -42,11 +42,18 @@
 	{{{body}}}
 
 	<footer class="site-footer">
-		<a class="subscribe icon-feed" href="{{@blog.url}}/rss/"><span class="tooltip">RSS</span></a>
+                <span class="icon-bar">
+                  <a class="social social-email" href="mailto:jaywir3@gmail.com"><span class="tooltip">Email: jaywir3@gmail.com</span></a>
+		  <a class="social social-rss" href="{{@blog.url}}/rss/"><span class="tooltip">RSS</span></a>
+		  <a class="social social-github" href="http://www.github.com/jwir3"><span class="tooltip">Github: jwir3</span></a>
+                  <a class="social social-facebook" href="http://www.facebook.com/jwir3"><span class="tooltip">Facebook: Scott Johnson</span></a>
+                  <a class="social social-stackoverflow" href="http://stackoverflow.com/users/281460/jwir3"><span class="tooltip">Stack Overflow: Jwir3</span></a>
+                  <a class="social social-twitter" href="http://www.twitter.com/jwir3"><span class="tooltip">Twitter: @jwir3</span></a>
+                </span>
 		<div class="inner">
 			 <section class="copyright">All content copyright <a href="{{@blog.url}}/">{{@blog.title}}</a> &copy; {{date format="YYYY"}} &bull; All rights reserved.</section>
-			 <section class="poweredby">Proudly published with <a class="icon-ghost" href="https://ghost.org">Ghost</a></section>
-			 <section class="themeinfo"><a href="http://scotthsmith.com/projects/decode/">Decode</a> by <a href="http://scotthsmith.com">Scott Smith</a></section>
+			 <!-- <section class="poweredby">Proudly published with <a class="icon-ghost" href="https://ghost.org">Ghost</a></section> -->
+			 <!-- <section class="themeinfo"><a href="http://scotthsmith.com/projects/decode/">Decode</a> by <a href="http://scotthsmith.com">Scott Smith</a></section> -->
 		</div>
 	</footer>
 
