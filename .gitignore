@@ -3,3 +3,4 @@ config.codekit
 node_modules/
 bower_components/
 assets/**/build/
+npm-debug.log

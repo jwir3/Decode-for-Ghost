@@ -16,7 +16,8 @@
 	{{! Styles and Scripts }}
 	<link rel="stylesheet" type="text/css" href="{{asset "styles/build/style.css"}}">
 	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Oxygen:400,700">
-	
+        <link rel="stylesheet" type="text/css" href="{{asset "styles/prism.css"}}">
+
 	{{! Prefetch next page and previous pages, if they exist }}
 	{{#if pagination.next}}<link href="{{page_url pagination.next}}" rel="prefetch">{{/if}}
 	{{#if pagination.prev}}<link href="{{page_url pagination.prev}}" rel="prefetch">{{/if}}
@@ -37,7 +38,7 @@
 	{{#is "author"}}
 		{{#if @blog.cover}}{{#if author.cover}}style="background-image: url({{author.cover}});"{{else}}style="background-image: url({{@blog.cover}});"{{/if}}{{/if}}
 	{{/is}}>
-	
+
 	{{! Everything else gets inserted here }}
 	{{{body}}}
 
@@ -63,5 +64,6 @@
 	{{! Ghost outputs important scripts and data with this tag }}
 	{{ghost_foot}}
 	<script src="{{asset "scripts/build/main.js"}}"></script>
+        <script src="{{asset "scripts/prism.js"}}"></script>
 </body>
 </html>
