@@ -1,54 +1,48 @@
 var gulp       = require('gulp'),
-	csscomb    = require('gulp-csscomb'),
-	sass       = require('gulp-sass'),
 	postcss    = require('gulp-postcss'),
-	bower      = require('gulp-bower');
-	concat     = require('gulp-concat'),
-	uglify     = require('gulp-uglify'),
 	sourcemaps = require('gulp-sourcemaps');
 
 var paths = {
-	styles:  ['assets/styles/*.scss'],
-	scripts: ['assets/scripts/main.js', 'bower_components/FitVids/jquery.fitvids.js'],
+	styles:  {
+		src: ['assets/styles/*.css', '!assets/styles/variables.css'],
+		dest: 'assets/styles/build/'
+	}
 };
 
-gulp.task('bower', function() {
-	return bower();
-});
-
-gulp.task('styles', function() {
+function styles() {
 	var processors = [
-		require('autoprefixer-core')('last 2 versions', '> 1%', 'ie 9', 'ie 8', 'Firefox ESR'),
-		require('css-mqpacker'),
-		require('postcss-import')({path: ['node_modules']}), // Look in the node_modules folder for @imports (Normalize.css).
-		require('csswring')
+		require('postcss-import'),
+		require('autoprefixer'),
+		require('postcss-nested'),
+	    require('postcss-custom-properties'),
+	    require('postcss-pseudoelements'),
+		require('css-mqpacker')({sort: true}),
+		require('postcss-normalize'),
+		require('cssnano')({autoprefixer: false})
     ];
-	return gulp.src(paths.styles)
+	return gulp.src(paths.styles.src)
 		.pipe(sourcemaps.init())
-			.pipe(csscomb())
-			.pipe(sass())
 			.pipe(postcss(processors))
 		.pipe(sourcemaps.write('./'))
-		.pipe(gulp.dest('assets/styles/build/'));
-});
+		.pipe(gulp.dest(paths.styles.dest));
+}
 
-gulp.task('scripts', ['bower'], function() {
-	return gulp.src(paths.scripts)
-		.pipe(sourcemaps.init())
-			.pipe(concat('main.js'))
-			.pipe(uglify())
-		.pipe(sourcemaps.write('./'))
-		.pipe(gulp.dest('assets/scripts/build/'));
-});
-
-gulp.task('watch', function() {
-	gulp.watch(paths.styles, ['styles']);
-	gulp.watch(paths.scripts, ['scripts']);
-});
+function watch() {
+	gulp.watch(paths.styles.src, styles);
+}
 
 // Workflows
 // $ gulp: Builds, prefixes, and minifies CSS files; concencates and minifies JS files; watches for changes. The works.
-gulp.task('default', ['styles', 'scripts', 'watch']);
+var defaultTask = gulp.parallel(styles, watch);
 
 // $ gulp build: Builds, prefixes, and minifies CSS files; concencates and minifies JS files. For deployments.
-gulp.task('build', ['styles', 'scripts']);
+var buildTask = gulp.parallel(styles);
+
+// Exports
+// Externalise individual tasks.
+exports.styles = styles;
+exports.watch = watch;
+
+// Externalise Workflows.
+exports.build = buildTask;
+exports.default = defaultTask;

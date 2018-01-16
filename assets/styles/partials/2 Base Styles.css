@@ -1,5 +1,7 @@
-// 2. Base Styles
-// Setting up some base styles
+/*
+	2. Base Styles
+	Setting up some base styles
+*/
 
 html {
 	height: 100%;
@@ -7,19 +9,19 @@ html {
 }
 
 body {
-	font: normal 300 110%/1.5 $font-family;
-	color: $text-color;
-	background-color: $background-color;
+	font: normal 300 110%/1.5 var(--font-family);
+	color: var(--text-color);
+	background-color: var(--background-color);
 	background-position: center;
 	background-size: 100%;
 	background-size: cover;
 	background-repeat: no-repeat;
-	background-attachment: fixed;
+	margin: 0;
 }
 
 ::selection {
-	color: $text-color;
-	background: $highlight-color;
+	color: var(--text-color);
+	background: var(--highlight-color);
 	text-shadow: none;
 }
 
@@ -30,22 +32,22 @@ h4, h5, h6 {
 	margin-top: 0;
 	
 	a {
-		color: $text-color;
+		color: var(--text-color);
 	}
 }
 
 a {
 	transition: color ease-out 0.4s;
-	color: $accent-color;
+	color: var(--accent-color);
 	text-decoration: none;
 
 	&:hover {
-		 color: $accent-color;
+		 color: var(--accent-color);
 	}
 	
 	&:active,
 	&:focus {
-		 color: $secondary-accent-color;
+		 color: var(--secondary-accent-color);
 		 outline: none;
 	}
 }
@@ -58,14 +60,14 @@ a {
 	border-bottom: 1px solid rgba(127,127,127,0);
 		
 	&:hover {
-		color: $accent-color;
-		border-bottom-color: $accent-color;
+		color: var(--accent-color);
+		border-bottom-color: var(--accent-color);
 	}
 	
 	&:active,
 	&:focus {
-		color: $secondary-accent-color;
-		border-bottom-color: $secondary-accent-color;
+		color: var(--secondary-accent-color);
+		border-bottom-color: var(--secondary-accent-color);
 	}
 }
 
@@ -94,7 +96,7 @@ hr {
 blockquote {
 	box-sizing: border-box;
 	margin: 1.6em 0;
-	border-left: $accent-color 0.15em solid;
+	border-left: var(--accent-color 0.15em solid);
 	quotes: '“' '”';
 }
 

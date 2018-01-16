@@ -19,32 +19,36 @@
    0. Includes - Ground zero
    ========================================================================== */
 
-@import 'normalize.css/normalize.css';
-@import 'settings'; /* Import custom-defined styles */
+@import 'variables.css'; /* Import custom-defined styles */
 
 /* ==========================================================================
    1. Icons - Sets up the icon font and respective classes
    ========================================================================== */
 
-@import 'partials/1 Icons';
+@import 'partials/1 Icons.css';
 
 
 /* ==========================================================================
    2. Base Styles - Setting up some base styles
    ========================================================================== */
 
-@import 'partials/2 Base Styles';
+@import 'partials/2 Base Styles.css';
 
 
 /* ==========================================================================
    3. Utilities - These things get used a lot
    ========================================================================== */
 
-@import 'partials/3 Utilities';
+@import 'partials/3 Utilities.css';
 
 /* ==========================================================================
    4. General
    ========================================================================== */
+
+.site-main {
+	padding-bottom: constant(safe-area-inset-bottom);
+	padding-bottom: env(safe-area-inset-bottom);
+}
 
 .blog-logo,
 .header-logo {
@@ -75,7 +79,7 @@
 	&.blog-has-cover {
 		.header-logo {
 			filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.35));
-			backface-visibility: hidden; // A little hack that makes the image look crisp on HiDPI Displays: http://creativeandcode.com/fix-css-filters-creating-blurry-images-on-retina/
+			backface-visibility: hidden; /* A little hack that makes the image look crisp on HiDPI Displays: http://creativeandcode.com/fix-css-filters-creating-blurry-images-on-retina/ */
 		}
 
 		.site-main {
@@ -83,7 +87,7 @@
 			z-index: 2;
 			transform: translateZ(0); /* Turn on GPU acceleration to get smooth scrolling */
 			margin-top: 15em;
-			box-shadow: 0px 0px 2em rgba(0,0,0,0.5);
+			box-shadow: 0 -1em 1em rgba(0, 0, 0, 0.35);
 		}
 		
 		.site-header {
@@ -109,18 +113,21 @@
 	}
 	
 	.site-main {
-		background: $background-color;
+		background: var(--background-color);
 	}
 	
 	.featured.post {
 		box-sizing: border-box;
-		background: darken($background-color, 5%);
+		background: #DBDEE1;
 		padding: 2.5%;
 	}
 }
 .fancy-header.blog-has-cover.blog-has-logo {
+	.blog-logo, .header-logo {
+		top: 3em;
+	}
+	
 	.site-main {
-		top: -3em;
 		padding-top: 3em;
 	}
 }
@@ -138,13 +145,13 @@
 	width: 100%;
 	text-align: center;
 	padding-bottom: 1.5%;
-	border-bottom: 1px solid $accent-color;
+	border-bottom: 1px solid var(--accent-color);
 	margin: 2.5% auto 3.5%;
 }
 
 	.author-template {
 		.site-header {
-			margin-top: 0; // Removes spacing above author card.
+			margin-top: 0; /* Removes spacing above author card. */
 		}
 	}
 
@@ -158,16 +165,16 @@
 
 .blog-title a {
 	transition: text-shadow 0.5s ease-out;
-	color: $text-color;
+	color: var(--text-color);
 }
 
 	.blog-title a:hover {
-		color: $text-color;
+		color: var(--text-color);
 		text-shadow: 0px 0px 6px rgba(75,75,75,0.5);
 	}
 	
 	.blog-title a:active {
-		color: $text-color;
+		color: var(--text-color);
 		text-shadow: 0px -2px 12px rgba(75,75,75,0.85);
 	}
 
@@ -189,7 +196,7 @@
 
 .tag-archive-header {
 	margin: 0 auto;
-	border-bottom: 1px solid $accent-color;
+	border-bottom: 1px solid var(--accent-color);
 }
 
 .post {
@@ -269,14 +276,14 @@
 }
 
 .post-excerpt .excerpt-suffix {
-	color: $text-color;
+	color: var(--text-color);
 
 	&:hover {
-		 color: $accent-color;
+		 color: var(--accent-color);
 	}
 	
 	&:active {
-		 color: $secondary-accent-color;
+		 color: var(--secondary-accent-color);
 	}
 }
 
@@ -316,7 +323,7 @@
 
 .post-content blockquote {
 	padding: 0.5em 0.25em 0.5em 0.75em;
-	background: darken($background-color, 3.5%);
+	background: #DBDEE1;
 }
 
 .post-content blockquote > p::before {
@@ -331,10 +338,10 @@
 .post-meta {
 	display: inline-block;
 	font-size: 0.8em;
-	color: $secondary-text-color;
+	color: var(--secondary-text-color);
 	text-decoration: none;
 	padding: 0 2.5% 1%;
-	border-bottom: 1px solid $accent-color;
+	border-bottom: 1px solid var(--accent-color);
 	margin: 1.5% auto;
 }
 
@@ -345,11 +352,11 @@
 
 .post-footer {
 	padding-bottom: 1.5%;
-	border-bottom: 1px solid $accent-color;
+	border-bottom: 1px solid var(--accent-color);
 }
 
 .post-tags {
-	color: $secondary-text-color;
+	color: var(--secondary-text-color);
 	font-size: 0.9em;
 }
 
@@ -407,7 +414,8 @@
 		img {
 			transition: box-shadow 0.35s ease-out;
 			display: block;
-			max-width: 100%;
+			width: 100%;
+			max-width: 125px;
 			margin: 0;
 			border-radius: 50%;
 			box-shadow: 0 0 5px rgba(0,0,0,0);
@@ -425,7 +433,7 @@
 	}
 	
 	.author-name {
-		color: $text-color;
+		color: var(--text-color);
 		font-size: 1.6em;
 		font-weight: normal;
 	}
@@ -474,20 +482,20 @@
 	}
 	
 	a {
-		color: $text-color;
+		color: var(--text-color);
 		
 		&:hover {
-			color: $accent-color;
+			color: var(--accent-color);
 		}
 		
 		&:active,
 		&:focus {
-			color: $secondary-accent-color;
+			color: var(--secondary-accent-color);
 		}
 	}
 	
 	.nav-current a {
-		color: $accent-color;
+		color: var(--accent-color);
 		
 		&:hover {
 			animation: shake 0.25s ease 0.25s;
@@ -564,20 +572,20 @@
 	position: relative;
 	margin: 7.5% 5% 10%;
 	font-size: 1.3rem;
-	color: $secondary-text-color;
+	color: var(--secondary-text-color);
 	text-align: center;
 }
 
 .pagination a {
-	color: $secondary-text-color;
+	color: var(--secondary-text-color);
 }
 
 	.pagination a:hover {
-		color: $accent-color;
+		color: var(--accent-color);
 	}
 	
 	.pagination a:active {
-		color: $secondary-accent-color;
+		color: var(--secondary-accent-color);
 	}
 
 /* Push the previous/next links out to the left/right */
@@ -619,18 +627,18 @@
 	margin: 5% auto 0;
 	margin: calc(2.5% + 25px) auto 0;
 	padding: 4rem 0 1%;
-	border-top: 1px solid $accent-color;
+	border-top: 1px solid var(--accent-color);
 	line-height: 1.7em;
 	text-align: center;
 	width: 85%;
 }
 
 .site-footer a {
-	color: $secondary-text-color;
+	color: var(--secondary-text-color);
 }
 
 	.site-footer a:hover {
-		 color: $accent-color;
+		 color: var(--accent-color);
 	}
 
 .poweredby .icon-ghost {
@@ -665,7 +673,7 @@
 	text-align: center;
 	line-height: 2.4rem;
 	border-radius: 50%;
-	background-color: $accent-color;
+	background-color: var(--accent-color);
 	transition: background-color 0.5s;
 
 	/* The RSS icon, inserted via icon font */
@@ -679,11 +687,11 @@
 	}
 
 	&:hover {
-		background-color: $secondary-accent-color;
+		background-color: var(--secondary-accent-color);
 	}
 
 	&:active {
-		background-color: $secondary-text-color;
+		background-color: var(--secondary-text-color);
 	}
 }
 
@@ -756,8 +764,11 @@
 
 .fancy-header.blog-has-cover.blog-has-logo,
 .fancy-header.blog-has-cover.author-has-image {
+	.blog-logo, .header-logo {
+		top: 4.25em;
+	}
+	
 	.site-main {
-		top: -4.25em;
 		padding-top: 4.25em;
 	}
 }
@@ -790,10 +801,6 @@
 
 .author-card {
 	margin-bottom: 5%;
-}
-
-.author-card .author-image img {
-	max-width: 125px;
 }
 
 .pagination {

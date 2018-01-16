@@ -1,5 +1,5 @@
 # Decode for Ghost
-#### [Download the latest release for Ghost here.](https://github.com/ScottSmith95/Decode-for-Ghost/releases/download/0.7.2/decode.zip)
+#### [Download the latest release for Ghost here.](https://github.com/ScottSmith95/Decode-for-Ghost/releases/download/0.8.0/decode.zip)
 
 #### [Demo](http://decode-ghost-demo.scotthsmith.com)
 
@@ -16,15 +16,20 @@ Copyright (c) 2013-2015 Scott Smith - Released under The MIT License.
     `cd $GhostDir/content/themes/Decoded-for-Ghost/`
 
 2. Install dependencies for npm
-    
+
     `npm install`
 
 3. Run Gulp
-    
+
     `gulp build`
 
 4. Restart Ghost
-    
+
     `cd $GhostDir && npm start --production`
 
 5. Profit.
+
+
+### Additional Notes
+
+Syntax highlighting is not supported by Decode, but you can easily inject [prism](http://prismjs.com/), or [highlightjs](https://highlightjs.org/) using the code injection tab. Consider using their respective [cdn's](https://cdnjs.com/)
